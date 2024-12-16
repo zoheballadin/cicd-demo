@@ -39,5 +39,5 @@ jobs:
     - name: Deploy and restart with PM2
       working-directory: .
       run: |
-        pm2 start app.js --name cicd-demo || pm2 restart cicd-demo
+        pm2 restart cicd-demo || pm2 start app.js --name cicd-demo 
 
