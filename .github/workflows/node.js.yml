@@ -2,19 +2,15 @@
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
 name: express-cicd
-env:
-    HOME: /root         # Set the home directory for PM2
-    PM2_HOME: /root/.pm2  # Optionally set PM2-specific home
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ['main']
   pull_request:
-    branches: [ "main" ]
+    branches: ['main']
 
 jobs:
   build:
-
     runs-on: self-hosted
     environment: cicd-demo
 
@@ -23,24 +19,22 @@ jobs:
         node-version: [20.x]
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
+      - name: Create .env for server
+        working-directory: .
+        run: |
+          echo "$SERVER_ENV" > .env
+          echo "PORT=$PORT" >> .env
+        env:
+          SERVER_ENV: ${{ secrets.SERVER_ENV }}
+          PORT: ${{ secrets.PORT }}
 
-    - name: Create .env for server
-      working-directory: .
-      run: |
-        echo "SERVER_ENV=$SERVER_ENV" >> .env
-        echo "PORT=$PORT" >> .env
-      env:
-        SERVER_ENV: ${{ secrets.SERVER_ENV }}
-        PORT: ${{ secrets.PORT }}
+      - name: Install server dependencies
+        working-directory: .
+        run: npm install
 
-    - name: Install server dependencies
-      working-directory: .
-      run: npm install
-
-    - name: Deploy and restart with PM2
-      working-directory: .
-      run: |
-        pm2 restart cicd-demo || pm2 start app.js --name cicd-demo 
-
+      - name: Deploy and restart with PM2
+        working-directory: .
+        run: |
+          npm restart
