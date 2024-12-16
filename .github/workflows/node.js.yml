@@ -28,7 +28,7 @@ jobs:
         echo "$SERVER_ENV" > .env
         echo "$PORT" > .env
       env:
-        SERVER_ENV: ${{ secrets.Server_ENV }}
+        SERVER_ENV: ${{ secrets.SERVER_ENV }}
         PORT: ${{ secrets.PORT }}
 
     - name: Install server dependencies
@@ -38,5 +38,5 @@ jobs:
     - name: Deploy and restart with PM2
       working-directory: .
       run: |
-        pm2 restart cicd-demo
+        pm2 start app.js --name cicd-demo || pm2 restart cicd-demo
 
