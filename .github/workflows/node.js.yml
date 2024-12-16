@@ -30,7 +30,7 @@ jobs:
         SERVER_ENV: ${{ secrets.Server_ENV }}
 
     - name: Install server dependencies
-      working-directory: server
+      working-directory: .
       run: npm install
 
     - name: Deploy and restart with PM2
