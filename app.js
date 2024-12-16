@@ -12,8 +12,8 @@ app.get('/home', (req, res) => {
   res.send('welcome to home');
 });
 
-app.get('/login', (req, res) => {
-  res.send('welcome to login');
+app.all('*', (req, res) => {
+  res.send('Not found');
 });
 
 app.listen(port, () => console.log(`server running on ${port}`));
