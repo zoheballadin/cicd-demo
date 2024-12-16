@@ -8,4 +8,8 @@ app.get('/', (req, res) => {
   res.send('welcome to CI/CD');
 });
 
+app.get('/home', (req, res) => {
+  res.send('welcome to home');
+});
+
 app.listen(port, () => console.log(`server running on ${port}`));
