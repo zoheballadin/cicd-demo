@@ -26,8 +26,8 @@ jobs:
     - name: Create .env for server
       working-directory: .
       run: |
-        echo "$SERVER_ENV" >> .env
-        echo "$PORT" >> .env
+        echo "SERVER_ENV=$SERVER_ENV" >> .env
+        echo "PORT=$PORT" >> .env
       env:
         SERVER_ENV: ${{ secrets.SERVER_ENV }}
         PORT: ${{ secrets.PORT }}
