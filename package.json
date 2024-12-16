@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "pm2 start app.js --name cicd-demo",
-    "restart": "pm2 restart cicd-demo --update-env"
+    "restart": "pm2 restart cicd-demo"
   },
   "keywords": [],
   "author": "",
