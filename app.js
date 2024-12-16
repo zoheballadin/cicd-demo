@@ -5,7 +5,7 @@ const app = express();
 const port = process.env.PORT;
 
 app.get('/', (req, res) => {
-  res.send('welcome to home');
+  res.send('welcome to home router');
 });
 
 app.listen(port, () => console.log(`server running on ${port}`));
