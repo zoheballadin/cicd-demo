@@ -39,3 +39,4 @@ jobs:
       working-directory: .
       run: |
         pm2 restart cicd-demo
+
