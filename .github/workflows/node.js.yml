@@ -13,6 +13,7 @@ jobs:
   build:
 
     runs-on: self-hosted
+    environment: cicd-demo
 
     strategy:
       matrix:
