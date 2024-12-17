@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/home', (req, res) => {
-  res.send('welcome to home');
+  res.send('welcome to home route');
 });
 
 app.all('*', (req, res) => {
