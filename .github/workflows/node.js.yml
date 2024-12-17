@@ -25,9 +25,9 @@ jobs:
         run: |
           echo "$SERVER_ENV" > .env
           echo "PORT=$PORT" >> .env
-        # env:
-        #   SERVER_ENV: ${{ secrets.SERVER_ENV }}
-        #   PORT: ${{ secrets.PORT }}
+        env:
+          SERVER_ENV: ${{ secrets.SERVER_ENV }}
+          PORT: ${{ secrets.PORT }}
 
       - name: Install server dependencies
         working-directory: ./server
