@@ -12,9 +12,9 @@ app.get('/home', (req, res) => {
   res.send('welcome to home route');
 });
 
-app.get('/login', (req, res) => {
-  res.send('welcome to login route');
-});
+// app.get('/login', (req, res) => {
+//   res.send('welcome to login route');
+// });
 
 app.all('*', (req, res) => {
   res.send('Not found');
