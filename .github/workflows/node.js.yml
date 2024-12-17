@@ -23,11 +23,10 @@ jobs:
       - name: Create .env for server
         working-directory: ./server
         run: |
-          echo "$SERVER_ENV" > .env
-          echo "PORT=$PORT" >> .env
+          touch ./.env
+          echo "${{ secrets.SERVER_ENV }}" > ./.env
         env:
           SERVER_ENV: ${{ secrets.SERVER_ENV }}
-          PORT: ${{ secrets.PORT }}
 
       - name: Install server dependencies
         working-directory: ./server
